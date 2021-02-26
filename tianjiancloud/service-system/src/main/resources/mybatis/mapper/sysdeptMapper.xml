@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.servicesystem.mapper.sysdeptMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.sysdept">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parentid" jdbcType="BIGINT" property="parentid" />
+    <result column="ordernum" jdbcType="INTEGER" property="ordernum" />
+    <result column="createby" jdbcType="VARCHAR" property="createby" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="lastupdateby" jdbcType="VARCHAR" property="lastupdateby" />
+    <result column="lastupdatetime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="delflag" jdbcType="TINYINT" property="delflag" />
+    <result column="compid" jdbcType="INTEGER" property="compid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, parentid, ordernum, createby, createtime, lastupdateby, lastupdatetime, 
+    delflag, compid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_dept
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_dept
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.sysdept">
+    insert into sys_dept (id, name, parentid, 
+      ordernum, createby, createtime, 
+      lastupdateby, lastupdatetime, delflag, 
+      compid)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=BIGINT}, 
+      #{ordernum,jdbcType=INTEGER}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastupdateby,jdbcType=VARCHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, #{delflag,jdbcType=TINYINT}, 
+      #{compid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.sysdept">
+    insert into sys_dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parentid != null">
+        parentid,
+      </if>
+      <if test="ordernum != null">
+        ordernum,
+      </if>
+      <if test="createby != null">
+        createby,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="lastupdateby != null">
+        lastupdateby,
+      </if>
+      <if test="lastupdatetime != null">
+        lastupdatetime,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+      <if test="compid != null">
+        compid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="ordernum != null">
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdateby != null">
+        #{lastupdateby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=TINYINT},
+      </if>
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.sysdept">
+    update sys_dept
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        parentid = #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="ordernum != null">
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null">
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdateby != null">
+        lastupdateby = #{lastupdateby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=TINYINT},
+      </if>
+      <if test="compid != null">
+        compid = #{compid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.sysdept">
+    update sys_dept
+    set name = #{name,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=BIGINT},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      createby = #{createby,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      lastupdateby = #{lastupdateby,jdbcType=VARCHAR},
+      lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      delflag = #{delflag,jdbcType=TINYINT},
+      compid = #{compid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+<!--  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.sysdept">-->
+<!--    <id column="id" jdbcType="BIGINT" property="id" />-->
+<!--    <result column="name" jdbcType="VARCHAR" property="name" />-->
+<!--    <result column="parent_id" jdbcType="BIGINT" property="parentId" />-->
+<!--    <result column="order_num" jdbcType="INTEGER" property="orderNum" />-->
+<!--    <result column="create_by" jdbcType="VARCHAR" property="createBy" />-->
+<!--    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />-->
+<!--    <result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy" />-->
+<!--    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />-->
+<!--    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    id, name, parent_id, order_num, create_by, create_time, last_update_by, last_update_time, -->
+<!--    del_flag-->
+<!--  </sql>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sys_dept-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+<!--    delete from sys_dept-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.sysdept">-->
+<!--    insert into sys_dept (id, name, parent_id, -->
+<!--      order_num, create_by, create_time, -->
+<!--      last_update_by, last_update_time, del_flag-->
+<!--      )-->
+<!--    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, -->
+<!--      #{orderNum,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, -->
+<!--      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=TINYINT}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.sysdept">-->
+<!--    insert into sys_dept-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        name,-->
+<!--      </if>-->
+<!--      <if test="parentId != null">-->
+<!--        parent_id,-->
+<!--      </if>-->
+<!--      <if test="orderNum != null">-->
+<!--        order_num,-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        create_by,-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time,-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        last_update_by,-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        last_update_time,-->
+<!--      </if>-->
+<!--      <if test="delFlag != null">-->
+<!--        del_flag,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="parentId != null">-->
+<!--        #{parentId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="orderNum != null">-->
+<!--        #{orderNum,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        #{createBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        #{lastUpdateTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="delFlag != null">-->
+<!--        #{delFlag,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.sysdept">-->
+<!--    update sys_dept-->
+<!--    <set>-->
+<!--      <if test="name != null">-->
+<!--        name = #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="parentId != null">-->
+<!--        parent_id = #{parentId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="orderNum != null">-->
+<!--        order_num = #{orderNum,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        create_by = #{createBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time = #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="delFlag != null">-->
+<!--        del_flag = #{delFlag,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.sysdept">-->
+<!--    update sys_dept-->
+<!--    set name = #{name,jdbcType=VARCHAR},-->
+<!--      parent_id = #{parentId,jdbcType=BIGINT},-->
+<!--      order_num = #{orderNum,jdbcType=INTEGER},-->
+<!--      create_by = #{createBy,jdbcType=VARCHAR},-->
+<!--      create_time = #{createTime,jdbcType=TIMESTAMP},-->
+<!--      last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},-->
+<!--      del_flag = #{delFlag,jdbcType=TINYINT}-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+</mapper>

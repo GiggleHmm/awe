@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.serviceactivity.mapper.tjactivityprizesMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.serviceactivity.Entity.tjactivityprizes">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="acid" jdbcType="INTEGER" property="acid" />
+    <result column="awtype" jdbcType="INTEGER" property="awtype" />
+    <result column="awid" jdbcType="INTEGER" property="awid" />
+    <result column="prizevalue" jdbcType="DOUBLE" property="prizevalue" />
+    <result column="percentvl" jdbcType="INTEGER" property="percentvl" />
+    <result column="createuserid" jdbcType="INTEGER" property="createuserid" />
+    <result column="acname" jdbcType="VARCHAR" property="acname" />
+    <result column="awtypenm" jdbcType="VARCHAR" property="awtypenm" />
+    <result column="awnm" jdbcType="VARCHAR" property="awnm" />
+    <result column="creatusernm" jdbcType="VARCHAR" property="creatusernm" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, acid, awtype, awid, prizevalue, percentvl, createuserid, acname, awtypenm, awnm, 
+    creatusernm, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tj_activity_prizes
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tj_activity_prizes
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.serviceactivity.Entity.tjactivityprizes">
+    insert into tj_activity_prizes (id, acid, awtype, 
+      awid, prizevalue, percentvl, 
+      createuserid, acname, awtypenm, 
+      awnm, creatusernm, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{acid,jdbcType=INTEGER}, #{awtype,jdbcType=INTEGER}, 
+      #{awid,jdbcType=INTEGER}, #{prizevalue,jdbcType=DOUBLE}, #{percentvl,jdbcType=INTEGER}, 
+      #{createuserid,jdbcType=INTEGER}, #{acname,jdbcType=VARCHAR}, #{awtypenm,jdbcType=VARCHAR}, 
+      #{awnm,jdbcType=VARCHAR}, #{creatusernm,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.serviceactivity.Entity.tjactivityprizes">
+    insert into tj_activity_prizes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="acid != null">
+        acid,
+      </if>
+      <if test="awtype != null">
+        awtype,
+      </if>
+      <if test="awid != null">
+        awid,
+      </if>
+      <if test="prizevalue != null">
+        prizevalue,
+      </if>
+      <if test="percentvl != null">
+        percentvl,
+      </if>
+      <if test="createuserid != null">
+        createuserid,
+      </if>
+      <if test="acname != null">
+        acname,
+      </if>
+      <if test="awtypenm != null">
+        awtypenm,
+      </if>
+      <if test="awnm != null">
+        awnm,
+      </if>
+      <if test="creatusernm != null">
+        creatusernm,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acid != null">
+        #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="awtype != null">
+        #{awtype,jdbcType=INTEGER},
+      </if>
+      <if test="awid != null">
+        #{awid,jdbcType=INTEGER},
+      </if>
+      <if test="prizevalue != null">
+        #{prizevalue,jdbcType=DOUBLE},
+      </if>
+      <if test="percentvl != null">
+        #{percentvl,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=INTEGER},
+      </if>
+      <if test="acname != null">
+        #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="awtypenm != null">
+        #{awtypenm,jdbcType=VARCHAR},
+      </if>
+      <if test="awnm != null">
+        #{awnm,jdbcType=VARCHAR},
+      </if>
+      <if test="creatusernm != null">
+        #{creatusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.serviceactivity.Entity.tjactivityprizes">
+    update tj_activity_prizes
+    <set>
+      <if test="acid != null">
+        acid = #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="awtype != null">
+        awtype = #{awtype,jdbcType=INTEGER},
+      </if>
+      <if test="awid != null">
+        awid = #{awid,jdbcType=INTEGER},
+      </if>
+      <if test="prizevalue != null">
+        prizevalue = #{prizevalue,jdbcType=DOUBLE},
+      </if>
+      <if test="percentvl != null">
+        percentvl = #{percentvl,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null">
+        createuserid = #{createuserid,jdbcType=INTEGER},
+      </if>
+      <if test="acname != null">
+        acname = #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="awtypenm != null">
+        awtypenm = #{awtypenm,jdbcType=VARCHAR},
+      </if>
+      <if test="awnm != null">
+        awnm = #{awnm,jdbcType=VARCHAR},
+      </if>
+      <if test="creatusernm != null">
+        creatusernm = #{creatusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.serviceactivity.Entity.tjactivityprizes">
+    update tj_activity_prizes
+    set acid = #{acid,jdbcType=INTEGER},
+      awtype = #{awtype,jdbcType=INTEGER},
+      awid = #{awid,jdbcType=INTEGER},
+      prizevalue = #{prizevalue,jdbcType=DOUBLE},
+      percentvl = #{percentvl,jdbcType=INTEGER},
+      createuserid = #{createuserid,jdbcType=INTEGER},
+      acname = #{acname,jdbcType=VARCHAR},
+      awtypenm = #{awtypenm,jdbcType=VARCHAR},
+      awnm = #{awnm,jdbcType=VARCHAR},
+      creatusernm = #{creatusernm,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

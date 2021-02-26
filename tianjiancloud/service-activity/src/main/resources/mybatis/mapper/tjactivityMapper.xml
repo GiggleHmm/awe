@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.serviceactivity.mapper.tjactivityMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.serviceactivity.Entity.tjactivity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="AName" jdbcType="VARCHAR" property="aname" />
+    <result column="STM" jdbcType="TIMESTAMP" property="stm" />
+    <result column="ETM" jdbcType="TIMESTAMP" property="etm" />
+    <result column="ObCodeType" jdbcType="VARCHAR" property="obcodetype" />
+    <result column="ASID" jdbcType="INTEGER" property="asid" />
+    <result column="CompID" jdbcType="INTEGER" property="compid" />
+    <result column="CreateID" jdbcType="INTEGER" property="createid" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="Remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="YZM" jdbcType="TINYINT" property="yzm" />
+    <result column="FaceTo" jdbcType="INTEGER" property="faceto" />
+    <result column="feedbacktoparent" jdbcType="INTEGER" property="feedbacktoparent" />
+    <result column="feedvalue" jdbcType="INTEGER" property="feedvalue" />
+    <result column="khddh" jdbcType="VARCHAR" property="khddh" />
+    <result column="anyfahuodate" jdbcType="INTEGER" property="anyfahuodate" />
+    <result column="sfahuodate" jdbcType="TIMESTAMP" property="sfahuodate" />
+    <result column="efahuodate" jdbcType="TIMESTAMP" property="efahuodate" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="tp" jdbcType="VARCHAR" property="tp" />
+    <result column="isopen" jdbcType="TINYINT" property="isopen" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, AName, STM, ETM, ObCodeType, ASID, CompID, CreateID, CreateDate, Remarks, YZM, 
+    FaceTo, feedbacktoparent, feedvalue, khddh, anyfahuodate, sfahuodate, efahuodate, 
+    priority, tp, isopen, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tj_activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tj_activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.serviceactivity.Entity.tjactivity">
+    insert into tj_activity (id, AName, STM, 
+      ETM, ObCodeType, ASID, 
+      CompID, CreateID, CreateDate, 
+      Remarks, YZM, FaceTo, 
+      feedbacktoparent, feedvalue, khddh, 
+      anyfahuodate, sfahuodate, efahuodate, 
+      priority, tp, isopen, 
+      del_flag)
+    values (#{id,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{stm,jdbcType=TIMESTAMP}, 
+      #{etm,jdbcType=TIMESTAMP}, #{obcodetype,jdbcType=VARCHAR}, #{asid,jdbcType=INTEGER}, 
+      #{compid,jdbcType=INTEGER}, #{createid,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{yzm,jdbcType=TINYINT}, #{faceto,jdbcType=INTEGER}, 
+      #{feedbacktoparent,jdbcType=INTEGER}, #{feedvalue,jdbcType=INTEGER}, #{khddh,jdbcType=VARCHAR}, 
+      #{anyfahuodate,jdbcType=INTEGER}, #{sfahuodate,jdbcType=TIMESTAMP}, #{efahuodate,jdbcType=TIMESTAMP}, 
+      #{priority,jdbcType=INTEGER}, #{tp,jdbcType=VARCHAR}, #{isopen,jdbcType=TINYINT}, 
+      #{delFlag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.serviceactivity.Entity.tjactivity">
+    insert into tj_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="aname != null">
+        AName,
+      </if>
+      <if test="stm != null">
+        STM,
+      </if>
+      <if test="etm != null">
+        ETM,
+      </if>
+      <if test="obcodetype != null">
+        ObCodeType,
+      </if>
+      <if test="asid != null">
+        ASID,
+      </if>
+      <if test="compid != null">
+        CompID,
+      </if>
+      <if test="createid != null">
+        CreateID,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="remarks != null">
+        Remarks,
+      </if>
+      <if test="yzm != null">
+        YZM,
+      </if>
+      <if test="faceto != null">
+        FaceTo,
+      </if>
+      <if test="feedbacktoparent != null">
+        feedbacktoparent,
+      </if>
+      <if test="feedvalue != null">
+        feedvalue,
+      </if>
+      <if test="khddh != null">
+        khddh,
+      </if>
+      <if test="anyfahuodate != null">
+        anyfahuodate,
+      </if>
+      <if test="sfahuodate != null">
+        sfahuodate,
+      </if>
+      <if test="efahuodate != null">
+        efahuodate,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="tp != null">
+        tp,
+      </if>
+      <if test="isopen != null">
+        isopen,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="stm != null">
+        #{stm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="etm != null">
+        #{etm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="obcodetype != null">
+        #{obcodetype,jdbcType=VARCHAR},
+      </if>
+      <if test="asid != null">
+        #{asid,jdbcType=INTEGER},
+      </if>
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="createid != null">
+        #{createid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="yzm != null">
+        #{yzm,jdbcType=TINYINT},
+      </if>
+      <if test="faceto != null">
+        #{faceto,jdbcType=INTEGER},
+      </if>
+      <if test="feedbacktoparent != null">
+        #{feedbacktoparent,jdbcType=INTEGER},
+      </if>
+      <if test="feedvalue != null">
+        #{feedvalue,jdbcType=INTEGER},
+      </if>
+      <if test="khddh != null">
+        #{khddh,jdbcType=VARCHAR},
+      </if>
+      <if test="anyfahuodate != null">
+        #{anyfahuodate,jdbcType=INTEGER},
+      </if>
+      <if test="sfahuodate != null">
+        #{sfahuodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="efahuodate != null">
+        #{efahuodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="tp != null">
+        #{tp,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null">
+        #{isopen,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.serviceactivity.Entity.tjactivity">
+    update tj_activity
+    <set>
+      <if test="aname != null">
+        AName = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="stm != null">
+        STM = #{stm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="etm != null">
+        ETM = #{etm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="obcodetype != null">
+        ObCodeType = #{obcodetype,jdbcType=VARCHAR},
+      </if>
+      <if test="asid != null">
+        ASID = #{asid,jdbcType=INTEGER},
+      </if>
+      <if test="compid != null">
+        CompID = #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="createid != null">
+        CreateID = #{createid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="yzm != null">
+        YZM = #{yzm,jdbcType=TINYINT},
+      </if>
+      <if test="faceto != null">
+        FaceTo = #{faceto,jdbcType=INTEGER},
+      </if>
+      <if test="feedbacktoparent != null">
+        feedbacktoparent = #{feedbacktoparent,jdbcType=INTEGER},
+      </if>
+      <if test="feedvalue != null">
+        feedvalue = #{feedvalue,jdbcType=INTEGER},
+      </if>
+      <if test="khddh != null">
+        khddh = #{khddh,jdbcType=VARCHAR},
+      </if>
+      <if test="anyfahuodate != null">
+        anyfahuodate = #{anyfahuodate,jdbcType=INTEGER},
+      </if>
+      <if test="sfahuodate != null">
+        sfahuodate = #{sfahuodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="efahuodate != null">
+        efahuodate = #{efahuodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="tp != null">
+        tp = #{tp,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null">
+        isopen = #{isopen,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.serviceactivity.Entity.tjactivity">
+    update tj_activity
+    set AName = #{aname,jdbcType=VARCHAR},
+      STM = #{stm,jdbcType=TIMESTAMP},
+      ETM = #{etm,jdbcType=TIMESTAMP},
+      ObCodeType = #{obcodetype,jdbcType=VARCHAR},
+      ASID = #{asid,jdbcType=INTEGER},
+      CompID = #{compid,jdbcType=INTEGER},
+      CreateID = #{createid,jdbcType=INTEGER},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      YZM = #{yzm,jdbcType=TINYINT},
+      FaceTo = #{faceto,jdbcType=INTEGER},
+      feedbacktoparent = #{feedbacktoparent,jdbcType=INTEGER},
+      feedvalue = #{feedvalue,jdbcType=INTEGER},
+      khddh = #{khddh,jdbcType=VARCHAR},
+      anyfahuodate = #{anyfahuodate,jdbcType=INTEGER},
+      sfahuodate = #{sfahuodate,jdbcType=TIMESTAMP},
+      efahuodate = #{efahuodate,jdbcType=TIMESTAMP},
+      priority = #{priority,jdbcType=INTEGER},
+      tp = #{tp,jdbcType=VARCHAR},
+      isopen = #{isopen,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllSmart" resultMap="BaseResultMap">
+     select
+     <include refid="Base_Column_List" />
+     from tj_activity
+      <if test="compid!=null">
+        where compid=#{compid}
+      </if>
+      <if test="aname!=null">
+        and aname like #{aname}
+      </if>
+      <if test="sstm!=null and estm!=null">
+        and stm between #{sstm} and #{estm}
+      </if>
+      <if test="sorter!= null">
+        order by #{sorter,jdbcType=VARCHAR}
+      </if>
+      limit #{lmt,jdbcType=INTEGER} offset #{offst,jdbcType=INTEGER}
+  </select>
+</mapper>

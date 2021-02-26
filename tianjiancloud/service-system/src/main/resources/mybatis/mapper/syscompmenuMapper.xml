@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.servicesystem.mapper.syscompmenuMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.syscompmenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="compid" jdbcType="INTEGER" property="compid" />
+    <result column="menuid" jdbcType="INTEGER" property="menuid" />
+    <result column="menuname" jdbcType="VARCHAR" property="menuname" />
+    <result column="ordernum" jdbcType="INTEGER" property="ordernum" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="delflag" jdbcType="TINYINT" property="delflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, compid, menuid, menuname, ordernum, remarks, delflag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_comp_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_comp_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.syscompmenu">
+    insert into sys_comp_menu (id, compid, menuid, 
+      menuname, ordernum, remarks, 
+      delflag)
+    values (#{id,jdbcType=INTEGER}, #{compid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, 
+      #{menuname,jdbcType=VARCHAR}, #{ordernum,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.syscompmenu">
+    insert into sys_comp_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="compid != null">
+        compid,
+      </if>
+      <if test="menuid != null">
+        menuid,
+      </if>
+      <if test="menuname != null">
+        menuname,
+      </if>
+      <if test="ordernum != null">
+        ordernum,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null">
+        #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null">
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.syscompmenu">
+    update sys_comp_menu
+    <set>
+      <if test="compid != null">
+        compid = #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null">
+        menuid = #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null">
+        menuname = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.syscompmenu">
+    update sys_comp_menu
+    set compid = #{compid,jdbcType=INTEGER},
+      menuid = #{menuid,jdbcType=INTEGER},
+      menuname = #{menuname,jdbcType=VARCHAR},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<!--  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.syscompmenu">-->
+<!--    <id column="id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="compid" jdbcType="INTEGER" property="compid" />-->
+<!--    <result column="menuid" jdbcType="INTEGER" property="menuid" />-->
+<!--    <result column="menuname" jdbcType="VARCHAR" property="menuname" />-->
+<!--    <result column="ordernum" jdbcType="INTEGER" property="ordernum" />-->
+<!--    <result column="remarks" jdbcType="VARCHAR" property="remarks" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    id, compid, menuid, menuname, ordernum, remarks-->
+<!--  </sql>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sys_comp_menu-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+<!--    delete from sys_comp_menu-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.syscompmenu">-->
+<!--    insert into sys_comp_menu (id, compid, menuid, -->
+<!--      menuname, ordernum, remarks-->
+<!--      )-->
+<!--    values (#{id,jdbcType=INTEGER}, #{compid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, -->
+<!--      #{menuname,jdbcType=VARCHAR}, #{ordernum,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.syscompmenu">-->
+<!--    insert into sys_comp_menu-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="compid != null">-->
+<!--        compid,-->
+<!--      </if>-->
+<!--      <if test="menuid != null">-->
+<!--        menuid,-->
+<!--      </if>-->
+<!--      <if test="menuname != null">-->
+<!--        menuname,-->
+<!--      </if>-->
+<!--      <if test="ordernum != null">-->
+<!--        ordernum,-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        remarks,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="compid != null">-->
+<!--        #{compid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="menuid != null">-->
+<!--        #{menuid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="menuname != null">-->
+<!--        #{menuname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ordernum != null">-->
+<!--        #{ordernum,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        #{remarks,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.syscompmenu">-->
+<!--    update sys_comp_menu-->
+<!--    <set>-->
+<!--      <if test="compid != null">-->
+<!--        compid = #{compid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="menuid != null">-->
+<!--        menuid = #{menuid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="menuname != null">-->
+<!--        menuname = #{menuname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ordernum != null">-->
+<!--        ordernum = #{ordernum,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        remarks = #{remarks,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.syscompmenu">-->
+<!--    update sys_comp_menu-->
+<!--    set compid = #{compid,jdbcType=INTEGER},-->
+<!--      menuid = #{menuid,jdbcType=INTEGER},-->
+<!--      menuname = #{menuname,jdbcType=VARCHAR},-->
+<!--      ordernum = #{ordernum,jdbcType=INTEGER},-->
+<!--      remarks = #{remarks,jdbcType=VARCHAR}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>

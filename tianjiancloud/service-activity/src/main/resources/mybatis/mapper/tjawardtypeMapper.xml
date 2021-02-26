@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.serviceactivity.mapper.tjawardtypeMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.serviceactivity.Entity.tjawardtype">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parentid" jdbcType="INTEGER" property="parentid" />
+    <result column="awardtype" jdbcType="VARCHAR" property="awardtype" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="compid" jdbcType="INTEGER" property="compid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, parentid, awardtype, remarks, compid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tj_awardtype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tj_awardtype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.serviceactivity.Entity.tjawardtype">
+    insert into tj_awardtype (id, parentid, awardtype, 
+      remarks, compid)
+    values (#{id,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, #{awardtype,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{compid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.serviceactivity.Entity.tjawardtype">
+    insert into tj_awardtype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="parentid != null">
+        parentid,
+      </if>
+      <if test="awardtype != null">
+        awardtype,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="compid != null">
+        compid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="awardtype != null">
+        #{awardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.serviceactivity.Entity.tjawardtype">
+    update tj_awardtype
+    <set>
+      <if test="parentid != null">
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="awardtype != null">
+        awardtype = #{awardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="compid != null">
+        compid = #{compid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.serviceactivity.Entity.tjawardtype">
+    update tj_awardtype
+    set parentid = #{parentid,jdbcType=INTEGER},
+      awardtype = #{awardtype,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      compid = #{compid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

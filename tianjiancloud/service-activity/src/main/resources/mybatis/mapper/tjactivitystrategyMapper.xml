@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.serviceactivity.mapper.tjactivitystrategyMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.serviceactivity.Entity.tjactivitystrategy">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="compid" jdbcType="INTEGER" property="compid" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="createuserid" jdbcType="INTEGER" property="createuserid" />
+    <result column="isactive" jdbcType="TINYINT" property="isactive" />
+    <result column="strategyname" jdbcType="VARCHAR" property="strategyname" />
+    <result column="totalwinrate" jdbcType="INTEGER" property="totalwinrate" />
+    <result column="timelimit" jdbcType="INTEGER" property="timelimit" />
+    <result column="maxtimeself" jdbcType="INTEGER" property="maxtimeself" />
+    <result column="packagenum" jdbcType="INTEGER" property="packagenum" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="md" jdbcType="TINYINT" property="md" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, compid, createdate, createuserid, isactive, strategyname, totalwinrate, timelimit, 
+    maxtimeself, packagenum, remarks, pid, md
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tj_activity_strategy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tj_activity_strategy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.serviceactivity.Entity.tjactivitystrategy">
+    insert into tj_activity_strategy (id, compid, createdate, 
+      createuserid, isactive, strategyname, 
+      totalwinrate, timelimit, maxtimeself, 
+      packagenum, remarks, pid, 
+      md)
+    values (#{id,jdbcType=INTEGER}, #{compid,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=INTEGER}, #{isactive,jdbcType=TINYINT}, #{strategyname,jdbcType=VARCHAR}, 
+      #{totalwinrate,jdbcType=INTEGER}, #{timelimit,jdbcType=INTEGER}, #{maxtimeself,jdbcType=INTEGER}, 
+      #{packagenum,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{md,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.serviceactivity.Entity.tjactivitystrategy">
+    insert into tj_activity_strategy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="compid != null">
+        compid,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="createuserid != null">
+        createuserid,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="strategyname != null">
+        strategyname,
+      </if>
+      <if test="totalwinrate != null">
+        totalwinrate,
+      </if>
+      <if test="timelimit != null">
+        timelimit,
+      </if>
+      <if test="maxtimeself != null">
+        maxtimeself,
+      </if>
+      <if test="packagenum != null">
+        packagenum,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="md != null">
+        md,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=TINYINT},
+      </if>
+      <if test="strategyname != null">
+        #{strategyname,jdbcType=VARCHAR},
+      </if>
+      <if test="totalwinrate != null">
+        #{totalwinrate,jdbcType=INTEGER},
+      </if>
+      <if test="timelimit != null">
+        #{timelimit,jdbcType=INTEGER},
+      </if>
+      <if test="maxtimeself != null">
+        #{maxtimeself,jdbcType=INTEGER},
+      </if>
+      <if test="packagenum != null">
+        #{packagenum,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="md != null">
+        #{md,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.serviceactivity.Entity.tjactivitystrategy">
+    update tj_activity_strategy
+    <set>
+      <if test="compid != null">
+        compid = #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        createuserid = #{createuserid,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=TINYINT},
+      </if>
+      <if test="strategyname != null">
+        strategyname = #{strategyname,jdbcType=VARCHAR},
+      </if>
+      <if test="totalwinrate != null">
+        totalwinrate = #{totalwinrate,jdbcType=INTEGER},
+      </if>
+      <if test="timelimit != null">
+        timelimit = #{timelimit,jdbcType=INTEGER},
+      </if>
+      <if test="maxtimeself != null">
+        maxtimeself = #{maxtimeself,jdbcType=INTEGER},
+      </if>
+      <if test="packagenum != null">
+        packagenum = #{packagenum,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="md != null">
+        md = #{md,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.serviceactivity.Entity.tjactivitystrategy">
+    update tj_activity_strategy
+    set compid = #{compid,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      createuserid = #{createuserid,jdbcType=INTEGER},
+      isactive = #{isactive,jdbcType=TINYINT},
+      strategyname = #{strategyname,jdbcType=VARCHAR},
+      totalwinrate = #{totalwinrate,jdbcType=INTEGER},
+      timelimit = #{timelimit,jdbcType=INTEGER},
+      maxtimeself = #{maxtimeself,jdbcType=INTEGER},
+      packagenum = #{packagenum,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
+      md = #{md,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

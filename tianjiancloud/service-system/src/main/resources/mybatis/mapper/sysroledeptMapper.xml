@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.servicesystem.mapper.sysroledeptMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.sysroledept">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="roleid" jdbcType="BIGINT" property="roleid" />
+    <result column="deptid" jdbcType="BIGINT" property="deptid" />
+    <result column="createby" jdbcType="VARCHAR" property="createby" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="lastupdateby" jdbcType="VARCHAR" property="lastupdateby" />
+    <result column="lastupdatetime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, roleid, deptid, createby, createtime, lastupdateby, lastupdatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role_dept
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_role_dept
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.sysroledept">
+    insert into sys_role_dept (id, roleid, deptid, 
+      createby, createtime, lastupdateby, 
+      lastupdatetime)
+    values (#{id,jdbcType=BIGINT}, #{roleid,jdbcType=BIGINT}, #{deptid,jdbcType=BIGINT}, 
+      #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{lastupdateby,jdbcType=VARCHAR}, 
+      #{lastupdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.sysroledept">
+    insert into sys_role_dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleid != null">
+        roleid,
+      </if>
+      <if test="deptid != null">
+        deptid,
+      </if>
+      <if test="createby != null">
+        createby,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="lastupdateby != null">
+        lastupdateby,
+      </if>
+      <if test="lastupdatetime != null">
+        lastupdatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=BIGINT},
+      </if>
+      <if test="deptid != null">
+        #{deptid,jdbcType=BIGINT},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdateby != null">
+        #{lastupdateby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.sysroledept">
+    update sys_role_dept
+    <set>
+      <if test="roleid != null">
+        roleid = #{roleid,jdbcType=BIGINT},
+      </if>
+      <if test="deptid != null">
+        deptid = #{deptid,jdbcType=BIGINT},
+      </if>
+      <if test="createby != null">
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdateby != null">
+        lastupdateby = #{lastupdateby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.sysroledept">
+    update sys_role_dept
+    set roleid = #{roleid,jdbcType=BIGINT},
+      deptid = #{deptid,jdbcType=BIGINT},
+      createby = #{createby,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      lastupdateby = #{lastupdateby,jdbcType=VARCHAR},
+      lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+<!--  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.sysroledept">-->
+<!--    <id column="id" jdbcType="BIGINT" property="id" />-->
+<!--    <result column="role_id" jdbcType="BIGINT" property="roleId" />-->
+<!--    <result column="dept_id" jdbcType="BIGINT" property="deptId" />-->
+<!--    <result column="create_by" jdbcType="VARCHAR" property="createBy" />-->
+<!--    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />-->
+<!--    <result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy" />-->
+<!--    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    id, role_id, dept_id, create_by, create_time, last_update_by, last_update_time-->
+<!--  </sql>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sys_role_dept-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+<!--    delete from sys_role_dept-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.sysroledept">-->
+<!--    insert into sys_role_dept (id, role_id, dept_id, -->
+<!--      create_by, create_time, last_update_by, -->
+<!--      last_update_time)-->
+<!--    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{deptId,jdbcType=BIGINT}, -->
+<!--      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, -->
+<!--      #{lastUpdateTime,jdbcType=TIMESTAMP})-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.sysroledept">-->
+<!--    insert into sys_role_dept-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="roleId != null">-->
+<!--        role_id,-->
+<!--      </if>-->
+<!--      <if test="deptId != null">-->
+<!--        dept_id,-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        create_by,-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time,-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        last_update_by,-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        last_update_time,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="roleId != null">-->
+<!--        #{roleId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="deptId != null">-->
+<!--        #{deptId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        #{createBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        #{lastUpdateTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.sysroledept">-->
+<!--    update sys_role_dept-->
+<!--    <set>-->
+<!--      <if test="roleId != null">-->
+<!--        role_id = #{roleId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="deptId != null">-->
+<!--        dept_id = #{deptId,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="createBy != null">-->
+<!--        create_by = #{createBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time = #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateBy != null">-->
+<!--        last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="lastUpdateTime != null">-->
+<!--        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.sysroledept">-->
+<!--    update sys_role_dept-->
+<!--    set role_id = #{roleId,jdbcType=BIGINT},-->
+<!--      dept_id = #{deptId,jdbcType=BIGINT},-->
+<!--      create_by = #{createBy,jdbcType=VARCHAR},-->
+<!--      create_time = #{createTime,jdbcType=TIMESTAMP},-->
+<!--      last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},-->
+<!--      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+</mapper>

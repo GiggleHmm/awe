@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.servicesystem.mapper.syscompMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.syscomp">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="compname" jdbcType="VARCHAR" property="compname" />
+    <result column="businesstype" jdbcType="SMALLINT" property="businesstype" />
+    <result column="contents" jdbcType="VARCHAR" property="contents" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createby" jdbcType="VARCHAR" property="createby" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="updateby" jdbcType="VARCHAR" property="updateby" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="delflag" jdbcType="TINYINT" property="delflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, compname, businesstype, contents, createtime, createby, updatetime, updateby, 
+    remarks, delflag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_comp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_comp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.syscomp">
+    insert into sys_comp (id, compname, businesstype, 
+      contents, createtime, createby, 
+      updatetime, updateby, remarks, 
+      delflag)
+    values (#{id,jdbcType=INTEGER}, #{compname,jdbcType=VARCHAR}, #{businesstype,jdbcType=SMALLINT}, 
+      #{contents,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.syscomp">
+    insert into sys_comp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="compname != null">
+        compname,
+      </if>
+      <if test="businesstype != null">
+        businesstype,
+      </if>
+      <if test="contents != null">
+        contents,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createby != null">
+        createby,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="updateby != null">
+        updateby,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="compname != null">
+        #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=SMALLINT},
+      </if>
+      <if test="contents != null">
+        #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.syscomp">
+    update sys_comp
+    <set>
+      <if test="compname != null">
+        compname = #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        businesstype = #{businesstype,jdbcType=SMALLINT},
+      </if>
+      <if test="contents != null">
+        contents = #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        updateby = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.syscomp">
+    update sys_comp
+    set compname = #{compname,jdbcType=VARCHAR},
+      businesstype = #{businesstype,jdbcType=SMALLINT},
+      contents = #{contents,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createby = #{createby,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateby = #{updateby,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<!--  <resultMap id="BaseResultMap" type="com.china315net.servicesystem.Entity.syscomp">-->
+<!--    <id column="id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="compname" jdbcType="VARCHAR" property="compname" />-->
+<!--    <result column="businesstype" jdbcType="SMALLINT" property="businesstype" />-->
+<!--    <result column="contents" jdbcType="VARCHAR" property="contents" />-->
+<!--    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />-->
+<!--    <result column="createby" jdbcType="VARCHAR" property="createby" />-->
+<!--    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />-->
+<!--    <result column="updateby" jdbcType="VARCHAR" property="updateby" />-->
+<!--    <result column="remarks" jdbcType="VARCHAR" property="remarks" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    id, compname, businesstype, contents, createtime, createby, updatetime, updateby, -->
+<!--    remarks-->
+<!--  </sql>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sys_comp-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+<!--    delete from sys_comp-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.china315net.servicesystem.Entity.syscomp">-->
+<!--    insert into sys_comp (id, compname, businesstype, -->
+<!--      contents, createtime, createby, -->
+<!--      updatetime, updateby, remarks-->
+<!--      )-->
+<!--    values (#{id,jdbcType=INTEGER}, #{compname,jdbcType=VARCHAR}, #{businesstype,jdbcType=SMALLINT}, -->
+<!--      #{contents,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, -->
+<!--      #{updatetime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.china315net.servicesystem.Entity.syscomp">-->
+<!--    insert into sys_comp-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="compname != null">-->
+<!--        compname,-->
+<!--      </if>-->
+<!--      <if test="businesstype != null">-->
+<!--        businesstype,-->
+<!--      </if>-->
+<!--      <if test="contents != null">-->
+<!--        contents,-->
+<!--      </if>-->
+<!--      <if test="createtime != null">-->
+<!--        createtime,-->
+<!--      </if>-->
+<!--      <if test="createby != null">-->
+<!--        createby,-->
+<!--      </if>-->
+<!--      <if test="updatetime != null">-->
+<!--        updatetime,-->
+<!--      </if>-->
+<!--      <if test="updateby != null">-->
+<!--        updateby,-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        remarks,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="compname != null">-->
+<!--        #{compname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="businesstype != null">-->
+<!--        #{businesstype,jdbcType=SMALLINT},-->
+<!--      </if>-->
+<!--      <if test="contents != null">-->
+<!--        #{contents,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createtime != null">-->
+<!--        #{createtime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="createby != null">-->
+<!--        #{createby,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="updatetime != null">-->
+<!--        #{updatetime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="updateby != null">-->
+<!--        #{updateby,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        #{remarks,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.servicesystem.Entity.syscomp">-->
+<!--    update sys_comp-->
+<!--    <set>-->
+<!--      <if test="compname != null">-->
+<!--        compname = #{compname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="businesstype != null">-->
+<!--        businesstype = #{businesstype,jdbcType=SMALLINT},-->
+<!--      </if>-->
+<!--      <if test="contents != null">-->
+<!--        contents = #{contents,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createtime != null">-->
+<!--        createtime = #{createtime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="createby != null">-->
+<!--        createby = #{createby,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="updatetime != null">-->
+<!--        updatetime = #{updatetime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="updateby != null">-->
+<!--        updateby = #{updateby,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="remarks != null">-->
+<!--        remarks = #{remarks,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.china315net.servicesystem.Entity.syscomp">-->
+<!--    update sys_comp-->
+<!--    set compname = #{compname,jdbcType=VARCHAR},-->
+<!--      businesstype = #{businesstype,jdbcType=SMALLINT},-->
+<!--      contents = #{contents,jdbcType=VARCHAR},-->
+<!--      createtime = #{createtime,jdbcType=TIMESTAMP},-->
+<!--      createby = #{createby,jdbcType=VARCHAR},-->
+<!--      updatetime = #{updatetime,jdbcType=TIMESTAMP},-->
+<!--      updateby = #{updateby,jdbcType=VARCHAR},-->
+<!--      remarks = #{remarks,jdbcType=VARCHAR}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>

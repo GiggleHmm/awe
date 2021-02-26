@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.china315net.serviceactivity.mapper.tjactivityagentMapper">
+  <resultMap id="BaseResultMap" type="com.china315net.serviceactivity.Entity.tjactivityagent">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="acid" jdbcType="INTEGER" property="acid" />
+    <result column="agentid" jdbcType="INTEGER" property="agentid" />
+    <result column="agentname" jdbcType="VARCHAR" property="agentname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, acid, agentid, agentname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tj_activity_agent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tj_activity_agent
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china315net.serviceactivity.Entity.tjactivityagent">
+    insert into tj_activity_agent (id, acid, agentid, 
+      agentname)
+    values (#{id,jdbcType=INTEGER}, #{acid,jdbcType=INTEGER}, #{agentid,jdbcType=INTEGER}, 
+      #{agentname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china315net.serviceactivity.Entity.tjactivityagent">
+    insert into tj_activity_agent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        acid,
+      </if>
+      <if test="agentid != null">
+        agentid,
+      </if>
+      <if test="agentname != null">
+        agentname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="agentid != null">
+        #{agentid,jdbcType=INTEGER},
+      </if>
+      <if test="agentname != null">
+        #{agentname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china315net.serviceactivity.Entity.tjactivityagent">
+    update tj_activity_agent
+    <set>
+      <if test="acid != null">
+        acid = #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="agentid != null">
+        agentid = #{agentid,jdbcType=INTEGER},
+      </if>
+      <if test="agentname != null">
+        agentname = #{agentname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china315net.serviceactivity.Entity.tjactivityagent">
+    update tj_activity_agent
+    set acid = #{acid,jdbcType=INTEGER},
+      agentid = #{agentid,jdbcType=INTEGER},
+      agentname = #{agentname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

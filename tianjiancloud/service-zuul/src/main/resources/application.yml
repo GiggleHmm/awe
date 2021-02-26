@@ -1,0 +1,61 @@
+server:
+  port: 9099
+spring:
+  application:
+    name: service-zuul
+  redis:
+    host: 127.0.0.1
+    database: 1
+    password: 666666
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 30
+        min-idle: 10
+        max-wait: 10000
+
+
+#  main:
+#    allow-bean-definition-overriding: true
+
+ignore:
+  urls: /auth/login,/authrefresh
+
+eureka:
+  client:
+    service-url:
+      #填写注册中心服务器地址
+      defaultZone: http://localhost:9000/eureka
+    # 是否需要将自己注册到注册中心
+    #register-with-eureka: true
+    # 是否需要搜索服务信息
+    #fetch-registry: true
+  instance:
+    # 使用ip地址注册到注册中心
+    prefer-ip-address: true
+    # 注册中心列表中显示的状态参数
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+# 忽略的url
+# ignore.urls=/auth/login,/authrefresh
+
+
+zuul:
+  routes:
+    #    #设置服务a的路由
+    #    service-a:
+    #      path: /service-a/**
+    #      #这里写a服务的注册名字
+    #      serviceId: service-a
+    #    #设置服务b的路由
+    #    service-b:
+    #      path: /service-b/**
+    #      #这里写b服务的注册名字
+    #      serviceId: service-b
+    #设置活动服务的路由
+    service-activity:
+      path: /service-activity/**
+      #活动服务注册名字
+      serviceId: service-activity
+
