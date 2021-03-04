@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CrosConfig implements WebMvcConfigurer {
+//what are you fucking seeing?
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
