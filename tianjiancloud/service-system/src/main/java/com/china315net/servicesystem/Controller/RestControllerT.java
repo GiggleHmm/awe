@@ -16,6 +16,7 @@ import static com.china315net.servicesystem.Commlib.comm.getJsonObject;
  * @author asus
  */
 @RestController
+@RequestMapping("/sys")
 public class RestControllerT {
 
     @Autowired

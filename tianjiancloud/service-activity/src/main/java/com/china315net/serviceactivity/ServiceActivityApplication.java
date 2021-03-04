@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+/**
+ * @author asus
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @MapperScan("com.china315net.serviceactivity.mapper")

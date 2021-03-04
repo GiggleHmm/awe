@@ -15,12 +15,33 @@ spring:
         min-idle: 10
         max-wait: 10000
 
+  cloud:
+    gateway:
+      routes:
+        - id: service-activity
+          uri: http://localhost:9012
+          predicates:
+            - Path=/rest/**
+          filters:
+            - RewritePath=/service-activity/(?<segment>.*), /$\{segment}
+        - id: service-activity
+          uri: http://localhost:9012
+          predicates:
+            - Path=/remote/**
+          filters:
+            - RewritePath=/service-activity/(?<segment>.*), /$\{segment}
+        - id: service-system
+          uri: http://localhost:9013
+          predicates:
+            - Path=/sys/**
+          filters:
+            - RewritePath=/service-system/(?<segment>.*), /$\{segment}
 
 #  main:
 #    allow-bean-definition-overriding: true
 
-ignore:
-  urls: /auth/login,/authrefresh
+#ignore:
+#  urls: /login,/refresh
 
 eureka:
   client:
@@ -38,24 +59,25 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
 
 # 忽略的url
-# ignore.urls=/auth/login,/authrefresh
+ignore:
+  urls: /login,/refresh
 
 
-zuul:
-  routes:
-    #    #设置服务a的路由
-    #    service-a:
-    #      path: /service-a/**
-    #      #这里写a服务的注册名字
-    #      serviceId: service-a
-    #    #设置服务b的路由
-    #    service-b:
-    #      path: /service-b/**
-    #      #这里写b服务的注册名字
-    #      serviceId: service-b
-    #设置活动服务的路由
-    service-activity:
-      path: /service-activity/**
-      #活动服务注册名字
-      serviceId: service-activity
+#zuul:
+#  routes:
+#    #    #设置服务a的路由
+#    #    service-a:
+#    #      path: /service-a/**
+#    #      #这里写a服务的注册名字
+#    #      serviceId: service-a
+#    #    #设置服务b的路由
+#    #    service-b:
+#    #      path: /service-b/**
+#    #      #这里写b服务的注册名字
+#    #      serviceId: service-b
+#    #设置活动服务的路由
+#    service-activity:
+#      path: /service-activity/**
+#      #活动服务注册名字
+#      serviceId: service-activity
 

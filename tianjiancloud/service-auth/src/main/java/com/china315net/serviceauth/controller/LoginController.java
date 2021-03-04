@@ -36,7 +36,11 @@ public class LoginController {
         //账号密码校验
         if(StrUtil.isNotEmpty(account) && StrUtil.isNotEmpty(password)){
             if ("admin".equals(account) && "123456a".equals(password)){
+
+
                 Map<String, String> map = tokenUtil.getToken(account, clientType);
+
+
                 return ResponseDTO.ok().setData(map);
             }else {
                 return ResponseDTO.error().setMsg("账号或密码错误");

@@ -42,11 +42,18 @@ public class TokenUtil {
         //向hash中放入数值
         stringRedisTemplate.opsForHash().put(key,"token", token);
         stringRedisTemplate.opsForHash().put(key,"refreshToken", refreshToken);
+
+        //存入一个键值
+        stringRedisTemplate.opsForValue().set("clientKey",key);
+
         //设置key过期时间
         stringRedisTemplate.expire(key, refreshTokenExpireTime, TimeUnit.MILLISECONDS);
         Map<String , String> map = new HashMap<>(2);
         map.put("token", token);
         map.put("refreshToken", refreshToken);
+
+
+
         return map;
     }
 
@@ -68,6 +75,7 @@ public class TokenUtil {
             }else {
                 String token = this.buildJWT(account, type);
                 stringRedisTemplate.opsForHash().put(key,"token", token);
+
                 stringRedisTemplate.opsForHash().put(key,"refreshToken", refreshToken);
                 stringRedisTemplate.expire(key, refreshTokenExpireTime, TimeUnit.MILLISECONDS);
                 Map<String , String> map = new HashMap<>(2);
