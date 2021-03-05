@@ -37,6 +37,27 @@ spring:
           filters:
             - RewritePath=/service-system/(?<segment>.*), /$\{segment}
 
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+#            allowedHeaders: "Access-Control-Allow-Origin"
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
+              - DELETE
+              - PUT
+              - HEAD
+              - PATCH
+#      default-filters[0]:
+#        DedupeResponseHeader:
+#          Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+
+
+
 #  main:
 #    allow-bean-definition-overriding: true
 

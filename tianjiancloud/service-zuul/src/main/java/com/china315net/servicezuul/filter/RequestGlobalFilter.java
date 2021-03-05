@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -27,9 +28,13 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * @author asus
+ */
 @Component
 @Configuration
 public class RequestGlobalFilter implements GlobalFilter, Ordered {
@@ -70,7 +75,7 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
 //        }
 
 
-        /**s
+        /**
          * 分割线
          */
 
@@ -80,17 +85,20 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
             String key=null;
 
 
-            key=stringRedisTemplate.opsForValue().get("clientKey");
-            tokenV=(String)stringRedisTemplate.opsForHash().get(key,"token");
-
-
-            String token =tokenV;
-         //   String token = exchange.getRequest().getHeaders().getFirst("Authorization");
+//            key=stringRedisTemplate.opsForValue().get("clientKey");
+//            tokenV=(String)stringRedisTemplate.opsForHash().get(key,"token");
+//
+//
+//            String token =tokenV;
+             String token = exchange.getRequest().getHeaders().getFirst("Authorization");
 
          //   clientType用于区分不同的端，在做校验token时需要
             String clientType = exchange.getRequest().getHeaders().getFirst("clientType");
+
             ServerHttpResponse response = exchange.getResponse();
+
             if (StrUtil.isBlank(token) || StrUtil.isBlank(clientType)) {
+
 
                 JSONObject message = new JSONObject();
                 message.put("code", StatusCodeConstants.TOKEN_NONE);
@@ -170,4 +178,5 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
         return userPhone;
 
     }
+
 }

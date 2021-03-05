@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+/**
+ * @author asus
+ */
 @RestController
 public class LoginController {
 
