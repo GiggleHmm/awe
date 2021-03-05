@@ -54,30 +54,6 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
 
         boolean status = CollectionUtil.contains(ignoreUrl, requestUrl);
 
-        /**
-         * 增加
-         */
-
-//        try{
-//            String key=stringRedisTemplate.opsForValue().get("clientKey");
-//            String tokenValues=(String)stringRedisTemplate.opsForHash().get(key,"token");
-//        }catch (Exception e){
-//            ServerHttpResponse response = exchange.getResponse();
-//            JSONObject message = new JSONObject();
-//            message.put("code", StatusCodeConstants.TOKEN_NONE);
-//            message.put("message", "认证失败");
-//            message.put("ctime", System.currentTimeMillis());
-//            byte[] bits = message.toString().getBytes(StandardCharsets.UTF_8);
-//            DataBuffer buffer = response.bufferFactory().wrap(bits);
-//            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-//            response.getHeaders().add("Content-Type", "text/json;charset=UTF-8");
-//            return response.writeWith(Mono.just(buffer));
-//        }
-
-
-        /**
-         * 分割线
-         */
 
         if (!status) {
 
@@ -87,9 +63,9 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
 
 //            key=stringRedisTemplate.opsForValue().get("clientKey");
 //            tokenV=(String)stringRedisTemplate.opsForHash().get(key,"token");
-//
-//
-//            String token =tokenV;
+//            String token =
+
+
              String token = exchange.getRequest().getHeaders().getFirst("Authorization");
 
          //   clientType用于区分不同的端，在做校验token时需要
