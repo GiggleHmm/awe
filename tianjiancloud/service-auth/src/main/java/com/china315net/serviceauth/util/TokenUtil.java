@@ -52,8 +52,6 @@ public class TokenUtil {
         map.put("token", token);
         map.put("refreshToken", refreshToken);
 
-
-
         return map;
     }
 
