@@ -40,9 +40,7 @@ public class LoginController {
         if(StrUtil.isNotEmpty(account) && StrUtil.isNotEmpty(password)){
             if ("admin".equals(account) && "123456a".equals(password)){
 
-
                 Map<String, String> map = tokenUtil.getToken(account, clientType);
-
 
                 return ResponseDTO.ok().setData(map);
             }else {
