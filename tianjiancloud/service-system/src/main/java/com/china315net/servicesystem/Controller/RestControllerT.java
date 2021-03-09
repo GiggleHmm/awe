@@ -3,7 +3,6 @@ package com.china315net.servicesystem.Controller;
 import com.alibaba.fastjson.JSONObject;
 import com.china315net.servicesystem.Entity.syscomp;
 import com.china315net.servicesystem.Entity.syscompmenu;
-import com.china315net.servicesystem.Entity.syscompmenu;
 import com.china315net.servicesystem.Service.syscompService;
 import com.china315net.servicesystem.Service.syscompmenuService;
 import org.springframework.beans.factory.annotation.Autowired;

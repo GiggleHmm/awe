@@ -3,7 +3,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.china315net.serviceactivity.Entity.*;
 import com.china315net.serviceactivity.Service.*;
-import com.china315net.serviceactivity.Service.*;
 import com.china315net.serviceactivity.commlib.common;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -25,6 +24,7 @@ import java.util.Map;
 @RequestMapping("/rest")
 public class MainRestController {
     common comm = new common();
+
     @Autowired
     tjactivityService activitService;
     @ApiOperation(value="返回客户活动信息列表", notes = "这里的id是公司id，目前是2，今后授权机制建立后会失去作用，随便传一个即可,支持通用分页")

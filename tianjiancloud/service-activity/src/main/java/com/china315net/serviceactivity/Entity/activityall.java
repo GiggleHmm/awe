@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ * @author asus
+ */
 public class activityall {
     private Integer id;
 
