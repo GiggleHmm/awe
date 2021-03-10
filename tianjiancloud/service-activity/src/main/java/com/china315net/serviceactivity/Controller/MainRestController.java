@@ -35,7 +35,7 @@ public class MainRestController {
             @ApiImplicitParam(value = "查询条件",name = "默认:like;between：传递值中间需用and隔开;=:传递值两侧加-")
     })
     @RequestMapping(value = "/tjactivity/list/{id}", method = RequestMethod.GET, produces = "application/json")
-    public JSONObject gettjactivitylist(@PathVariable Integer id, HttpServletRequest request) {
+    public JSONObject gettjactivitylist( Integer id, HttpServletRequest request) {
         Map<String, String[]> map = request.getParameterMap();
         String current = map.get("current") != null ? map.get("current")[0] : null;
         String pageSize = map.get("pageSize") != null ? map.get("pageSize")[0] : null;

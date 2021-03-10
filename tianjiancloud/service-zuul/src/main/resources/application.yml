@@ -21,6 +21,12 @@ spring:
         - id: service-activity
           uri: http://localhost:9012
           predicates:
+            - Path=/rest/tjactivity/list
+          filters:
+            - RewritePath=/service-activity/(?<segment>.*), /$\{segment}/1
+        - id: service-activity
+          uri: http://localhost:9012
+          predicates:
             - Path=/rest/**
           filters:
             - RewritePath=/service-activity/(?<segment>.*), /$\{segment}

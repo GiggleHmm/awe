@@ -1,9 +1,9 @@
 package com.china315net.serviceactivity.mapper;
 import com.china315net.serviceactivity.Entity.selectlist;
 import com.china315net.serviceactivity.Entity.tjactivitystrategy;
-import org.apache.ibatis.annotations.Mapper;
+
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
+
 
 import java.util.List;
 

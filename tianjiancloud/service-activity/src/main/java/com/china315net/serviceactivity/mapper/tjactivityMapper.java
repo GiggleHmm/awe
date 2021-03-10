@@ -1,7 +1,7 @@
 package com.china315net.serviceactivity.mapper;
 
 import com.china315net.serviceactivity.Entity.tjactivity;
-import org.apache.ibatis.annotations.Mapper;
+
 
 
 public interface tjactivityMapper {
