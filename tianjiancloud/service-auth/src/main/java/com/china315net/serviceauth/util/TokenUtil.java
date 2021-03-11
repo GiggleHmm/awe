@@ -113,6 +113,7 @@ public class TokenUtil {
                 .withExpiresAt(new Date(now.getTime() + tokenExpireTime))
                 //自定义的存放的数据
                 .withClaim("phone", account)
+              //  .withClaim("",)
                 //签名
                 .sign(algo);
         return token;
