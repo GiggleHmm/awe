@@ -62,11 +62,11 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
 
 
         if (!status) {
-            String tokenV=null;
-            String key=null;
 
-            //            key=stringRedisTemplate.opsForValue().get("clientKey");
-//            tokenV=(String)stringRedisTemplate.opsForHash().get(key,"token");
+//           String tokenV=null;
+//           String key=null;
+//           key=stringRedisTemplate.opsForValue().get("clientKey");
+//           tokenV=(String)stringRedisTemplate.opsForHash().get(key,"token");
 
              String token = exchange.getRequest().getHeaders().getFirst("Authorization");
          //   clientType用于区分不同的端，在做校验token时需要
