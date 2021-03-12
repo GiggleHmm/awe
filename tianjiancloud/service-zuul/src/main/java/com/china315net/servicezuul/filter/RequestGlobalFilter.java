@@ -58,8 +58,10 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
          */
         ServerHttpRequest req = exchange.getRequest();
         String path = req.getURI().getPath();
-        System.out.println(path);
 
+        System.out.println("*****************");
+        System.out.println(path);
+        System.out.println("*****************");
 
         if (!status) {
 

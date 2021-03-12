@@ -31,6 +31,7 @@ public class CorsResponseHeaderFilter implements GlobalFilter, Ordered {
                     .forEach(kv -> kv.setValue(new ArrayList<String>() {{
                         add(kv.getValue().get(0));
                     }}));
+            System.out.println("test");
             return chain.filter(exchange);
         }));
     }
